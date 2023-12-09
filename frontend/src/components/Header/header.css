@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,500;0,600;0,700;1,500;1,600&display=swap');
+.face-infos {
+      width: 50%;
+    }
+    
+    .face-infos h1 {
+      font-size: 60px;
+      margin-top: 30%;
+      margin-left: 35%;
+      margin-bottom: 30px;
+      color: #000000;
+    }
+    
+    .face-infos .container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .face-infos p {
+      width: 100%;
+      text-align: left;
+      margin-left: 35.9%;
+      font-weight: 400;
+      font-size: 22px;
+      color: #07c449;
+    }
+    
+    @media screen and (max-width: 980px) {
+      .face-infos {
+        width: 100%;
+      }
+    
+      .face-infos .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        margin: 19px auto;
+      }
+    
+    
+      .face-infos .container h1 {
+        margin-top: 10px;
+        font-size: 30px;
+        margin-left: 20%;
+      }
+    
+      .face-infos .container p {
+        font-size: 19px;
+        margin-left: 15%;
+        width: 75%;
+        margin-bottom: auto;
+      }
+    }
+    
+    
