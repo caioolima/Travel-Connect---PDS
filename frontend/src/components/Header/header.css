@@ -27,21 +27,48 @@
   color: #07c449;
 }
 
-@media screen and (max-width: 980px) {
+@media (max-width: 1350px) {
+  .face-infos h1 {
+      margin-left: 10%;
+      width: 100%;
+      margin-bottom: 5%;
+  }
+  .face-infos p {
+      margin-right: 70%;
+      width: 100%;
+      margin-bottom: auto;
+  }
+}
+
+@media (max-width: 992px) {
+  .face-infos h1 {
+      margin-left: 10%;
+      width: 100%;
+      margin-bottom: auto;
+  }
+  .face-infos p {
+      margin-left: 10%;
+      width: 100%;
+      margin-bottom: auto;
+  }
+}
+
+@media (max-width: 768px) {
   .face-infos {
     width: 100%;
   }
 
   .face-infos h1 {
-    margin-top: 10px;
-    font-size: 30px;
-    margin-left: 20%;
-  }
 
-  .face-infos p {
-    font-size: 19px;
-    margin-left: 15%;
-    width: 75%;
-    margin-bottom: auto;
+      font-size: 3.0em;
+      margin-left: 10%;
+      width: 100%;
+      margin-bottom: auto;
+    }
   }
-}
+  .face-infos p {
+    font-size: 1.2em;
+    margin-left: 10%;
+    width: 100%;
+  }
+  

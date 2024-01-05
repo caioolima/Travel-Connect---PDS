@@ -6,6 +6,7 @@
     "last_name": "Apellido",
     "phone": "Número de teléfono",
     "email": "Correo electrónico",
+    "enter_email": "Escribe tu correo electrónico",
     "password": "Contraseña",
     "confirm_password": "Confirmar contraseña",
     "dob_label": "Fecha de nacimiento:",

@@ -36,11 +36,15 @@ function LoginForm() {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      width: "26%",
-      height: "80%",
-      borderRadius: "3%",
+      width: "28%", // Ajuste a largura do modal conforme necessário
+      height: "90%", // Ajuste a altura do modal conforme necessário
+      borderRadius: "10px",
+      padding: "20px",
+      overflow: "auto", // Adicione overflow para lidar com conteúdos mais longos
     },
   };
+  
+  
 
   const handleOpenModal = () => {
     setIsOpen(true);
@@ -96,11 +100,14 @@ function LoginForm() {
         >
           {t("create_account")}
         </button>
+        <div className="help">
+          <p>
+            {t("need_help")}
+            <a href="#"> {t("click_here")}.</a>
+          </p>
+        </div>
       </div>
-      <p>
-        {t("need_help")}
-        <a href="#"> {t("click_here")}.</a>
-      </p>
+      
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
@@ -130,9 +137,7 @@ function LoginForm() {
                 <div className="flex-item">
                   <input
                     type="text"
-                    className={`entrada ${
-                      formErrors.firstName && "input-error"
-                    }`}
+                    className={"entrada"}
                     id="firstName"
                     placeholder={t("first_name")}
                     value={formFields.firstName}
@@ -145,9 +150,7 @@ function LoginForm() {
                 <div className="flex-item">
                   <input
                     type="text"
-                    className={`entrada ${
-                      formErrors.lastName && "input-error"
-                    }`}
+                    className={"entrada"}
                     id="lastName"
                     placeholder={t("last_name")}
                     value={formFields.lastName}
