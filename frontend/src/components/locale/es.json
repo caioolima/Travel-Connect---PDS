@@ -14,7 +14,6 @@
     "female": "Femenino",
     "other": "Otro",
     "register_button": "Registrar",
-    "enter_email": "Ingresa tu correo electrónico",
     "enter_password": "Ingresa tu contraseña",
     "login": "Iniciar sesión",
     "forgot_password": "¿Olvidaste tu contraseña?",
@@ -22,6 +21,10 @@
     "need_help": "¿Necesitas ayuda?",
     "click_here": "Haz clic aquí",
     "app_title": "TravelConnect",
+    "reset_password_title": "Problemas para iniciar sesión",
+    "reset_password_description": "Ingrese la dirección de correo electrónico asociada a su cuenta. Le enviaremos un correo electrónico con las instrucciones para restablecer su contraseña.",
+    "email_placeholder": "Correo electrónico",
+    "send_recovery_email": "Enviar correo electrónico",
     "connect_travelers": "Conectando viajeros y compartiendo",
     "share_experiences": "Experiencias por el mundo.",
     "terms_of_service": "Términos de servicio",
@@ -32,4 +35,5 @@
     "portuguese": "Portugués (BR)",
     "english": "Inglés (US)",
     "spanish": "Español (ES)"
-}
+  }
+  
