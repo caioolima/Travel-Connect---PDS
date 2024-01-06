@@ -1,5 +1,5 @@
 // form.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom"; // Adicione useNavigate aqui
@@ -28,35 +28,60 @@ function LoginForm() {
   const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
 
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      width: "28%", // Ajuste a largura do modal conforme necessário
-      height: "90%", // Ajuste a altura do modal conforme necessário
-      borderRadius: "10px",
-      padding: "20px",
-      overflow: "auto", // Adicione overflow para lidar com conteúdos mais longos
-    },
-  };
   
-  
-
   const handleOpenModal = () => {
     setIsOpen(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const handleCloseModal = () => {
     setIsOpen(false);
-    setRegistrationMessage("");
-    setFormFields(initialState);
-    setFormErrors({});
+    document.body.style.overflow = 'auto';
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth <= 480;
+      const modalWidth = isMobile ? "100%" : window.innerWidth <= 600 ? "88%" : "70%";
+      const modalHeight = isMobile ? "100%" : window.innerWidth >= 480 ? "88%" : "100%";
+
+      setModalStyle({
+        top: "50%",
+        left: "50%",
+        right: "auto",
+        bottom: "auto",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%)",
+        width: modalWidth,
+        height: modalHeight,
+        borderRadius: "10px",
+        padding: "20px",
+        overflow: "auto",
+      });
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const [modalStyle, setModalStyle] = useState({
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "100%",
+    height: "100%",
+    borderRadius: "10px",
+    padding: "20px",
+    overflow: "auto",
+  });
   const handleForgotPasswordClick = () => {
     // Redireciona para a página de redefinição de senha
     navigate("/reset");
@@ -100,7 +125,7 @@ function LoginForm() {
         >
           {t("create_account")}
         </button>
-        <div className="help">
+        <div className="h elp">
           <p>
             {t("need_help")}
             <a href="#"> {t("click_here")}.</a>
@@ -111,7 +136,7 @@ function LoginForm() {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
-        style={customStyles}
+      style={{ content: modalStyle }}
       >
         <div className="popup">
           <div className="popup-content">
@@ -212,7 +237,6 @@ function LoginForm() {
                 type="date"
                 id="dob"
                 max="2005-01-01"
-                value={formFields.dob}
                 required
               />
 

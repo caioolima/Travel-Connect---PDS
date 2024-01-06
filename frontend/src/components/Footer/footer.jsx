@@ -1,11 +1,11 @@
 // components/Footer/footer.js
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import i18n from '../Language/i18n';  // Ajuste o caminho conforme a estrutura real
-
-import '../Footer/footer.css';
-import '../css/main.css';
-import '../css/resets.css';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import i18n from "../Language/i18n"; // Ajuste o caminho conforme a estrutura real
+import { Link } from "react-router-dom";
+import "../Footer/footer.css";
+import "../css/main.css";
+import "../css/resets.css";
 
 function Footer() {
   const { t } = useTranslation();
@@ -17,31 +17,29 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-terms">
-        <a href="#">{t('terms_of_service')}</a>
-        <a href="#">{t('privacy_policy')}</a>
-        <a href="#">{t('help')}</a>
-        <a href="#">{t('about')}</a>
-        <a href="#">{t('privacy_center')}</a>
+      <Link to="/terms">{t("terms_of_service")}</Link>
+        <a href="#">{t("help")}</a>
+        <a href="#">{t("about")}</a>
       </div>
 
       <div className="language-buttons">
         <button
-          className={i18n.language === 'pt-BR' ? 'active' : ''}
-          onClick={() => changeLanguage('pt-BR')}
+          className={i18n.language === "pt-BR" ? "active" : ""}
+          onClick={() => changeLanguage("pt-BR")}
         >
-          {t('portuguese')}
+          {t("portuguese")}
         </button>
         <button
-          className={i18n.language === 'en-US' ? 'active' : ''}
-          onClick={() => changeLanguage('en-US')}
+          className={i18n.language === "en-US" ? "active" : ""}
+          onClick={() => changeLanguage("en-US")}
         >
-          {t('english')}
+          {t("english")}
         </button>
         <button
-          className={i18n.language === 'es-ES' ? 'active' : ''}
-          onClick={() => changeLanguage('es-ES')}
+          className={i18n.language === "es-ES" ? "active" : ""}
+          onClick={() => changeLanguage("es-ES")}
         >
-          {t('spanish')}
+          {t("spanish")}
         </button>
       </div>
 

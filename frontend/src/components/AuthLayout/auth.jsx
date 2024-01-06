@@ -1,6 +1,6 @@
 // AuthLayout.jsx
-import React from 'react';
-import Footer from '../Footer/footer';
+import React from "react";
+import Footer from "../Footer/footer";
 
 const AuthLayout = ({ children }) => {
   return (

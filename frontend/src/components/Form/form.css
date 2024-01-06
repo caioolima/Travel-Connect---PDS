@@ -2,8 +2,8 @@
 
 
 .form {
-  width: 100%;
-  max-width: 21%;
+  width: 50%;
+  max-width: 23%;
   background-color: #000000;
   height: 300px;
   display: flex;
@@ -14,6 +14,7 @@
   padding: 15px;
   border-radius: 12px;
   transition: margin 0.3s, width 0.3s; /* Add transition for smoother resizing */
+  margin-top: -260px;
 }
 
 .entrada {
@@ -47,9 +48,10 @@
 
 .forgot-password-link {
   cursor: pointer;
-  color: #5092e9;
-  font-size: 14px;
+  color: #4bc5f5;
+  font-size: 15px;
   margin: 15px 0;
+  font-weight: 500;
 }
 
 .forgot-password-link:hover {
@@ -64,6 +66,7 @@
 }
 
 .black-btn {
+  font-size: 15px;
   background-color: #fff;
   border: none;
   color: #000;
@@ -72,10 +75,10 @@
   border-radius: 8px;
   cursor: pointer;
   transition: 0.4s;
-  width: 98%;
+  width: 50%;
   font-family: "Raleway", sans-serif;
-  margin-bottom: 10%;
-  padding: 2%;
+  margin-bottom: 12%;
+  padding: 3%;
 }
 
 .black-btn:hover {
@@ -95,7 +98,7 @@
   display: inline-block; /* Adicione esta linha para centralizar o conteúdo */
 }
 
-.help a {
+.form-side a {
   font-weight: bold;
   transition: color 0.3s;
   color: #000000;
@@ -105,51 +108,85 @@
   color: #3b3b3b;
 }
 
+
 @media (max-width: 1630px) {
   .form {
-    width: 38%;
+    width: 30%;
     max-width: 400px;
-    margin-left: 55%;
+    margin-left: 65%;
   }
 }
 
-@media (max-width: 1450px) {
-  .form {
-    width: 38%;
-    max-width: 400px;
-    margin-left: 55%;
-  }
-
-}
-
-
-
-
-@media (max-width: 992px) {
+@media (max-width: 1082px) {
   .form {
     margin-top: 10%;
-    width: 70%;
-    max-width: 400px;
-    padding: 10px;
-    margin-left: 10%;
+    width: 50%;
+    margin-left: 30%;
   }
-
+  .black-btn{
+    margin-bottom: 16%;
+  }
 
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .form {
-    margin-top: 10%;
-    width: 80%;
-    max-width: 400px;
-    padding: 10px;
-    margin-left: 10%;
+    display:flex; 
+    text-align: center;
+    margin-left: 25%;
+    width:50%;
+   }
+   .form-side p{
+    font-size: 12px;
+   }
+   .black-btn{
+    margin-bottom: 16%;
+    height: 50px;
+    width: 70%;
+    margin-top: 14px;
+    font-size: 14px;
   }
-
 }
 
+@media (max-width: 480px) {
 
+  .form {
+    display:flex; 
+    text-align: center;
+   margin-left:48px;
+    width:80%;
+   }
+   .form-side p{
+    font-size: 12px;
+   }
+   .black-btn{
+    margin-bottom: 16%;
+    width: 70%;
+    margin-top: 14px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 280px) {
+
+  .form {
+    display:flex; 
+    text-align: center;
+   margin-left: 20px;
+    width:90%;
+   }
+   .form-side p{
+    font-size: 12px;
+   }
+   .black-btn{
+    margin-bottom: 20%;
+    width: 70%;
+    margin-top: 14px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
 
 .popup-content {
   position: absolute;
@@ -159,22 +196,21 @@
   background: #fff;
   padding: 20px;
   border-radius: 5px;
-  width: 80%;
-  max-width: 400px;
-
- 
+  width: 100%;
+  max-width: 700px;
 }
 
 .popup h2 {
-  font-size: 25px;
-  margin-left: 5%;
+  font-size: 23px;
+  margin-left: 3%;
   margin-top: 10px; /* Ajusta a margem superior */
   margin-bottom: 15px; /* Adiciona uma margem inferior */
   color: #333; /* Adiciona uma cor ao título */
 }
 
 .popup p {
-  margin-left: 5%;
+  font-size: 18px;
+  margin-left: 3%;
   margin-bottom: 15px;
   color: #666; /* Adiciona uma cor ao texto */
 }
@@ -184,12 +220,13 @@
 .popup-content select {
   width: 100%;
   border-radius: 5px;
-  height: 35px; /* Ajuste a altura conforme necessário */
+  height: 36px; /* Ajuste a altura conforme necessário */
   border: 1px solid #ccc;
   outline: none;
   padding: 10px;
   margin: 10px 0;
   box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
 }
 
 .popup-content input:focus,
@@ -197,9 +234,14 @@
   border: 1px solid #08fc5c;
 }
 
+
+#lastName{
+margin-left: 12px;
+}
+
 .flex-container {
   display: flex;
-  margin-bottom: 1px; /* Adiciona uma margem inferior ao flex-container */
+  margin-bottom: 2px; /* Adiciona uma margem inferior ao flex-container */
 }
 
 .flex-item {
@@ -208,16 +250,18 @@
 }
 
 .signuping {
+  font-family: "Raleway", sans-serif;
   background-color: #ea4f97;
   color: #fff;
-  font-size: 18px;
+  font-size: 15px;
   border: none;
   font-weight: bold;
-  transition: background-color 0.4s; /* Adiciona transição de cor de fundo */
+  transition: 0.4s; /* Adiciona transição de cor de fundo */
   cursor: pointer;
-  width: 100%;
-  height: 50px;
-  border-radius: 15px;
+  margin-left: 150px;
+  width: 50%;
+  height: 40px;
+  border-radius: 8px;
   margin-top: 20px; /* Ajusta a margem superior */
 }
 
@@ -261,21 +305,13 @@
   background-color: #bababa;
 }
 
-.popup-content p {
-  font-family: "Raleway", sans-serif;
-  font-size: 14px;
-  margin-top: 18px;
-  color: #666; /* Adiciona uma cor ao texto */
-}
-
 .popup-content select {
   margin-top: 10px; /* Ajusta a margem superior do seletor */
 }
 
 .popup-content .close-button {
-  position: absolute;
-  top: 1%;
-  margin-left: 90%;
+  top: -3%;
+  margin-left: 100%;
   font-size: 24px;
   cursor: pointer;
   color: #666; /* Adiciona uma cor ao botão de fechar */
@@ -289,3 +325,130 @@
   margin-left: 1%;
   margin-top: 1%;
 }
+
+@media (max-width: 280px) {
+  /* Estilos específicos para telas com largura até 768 pixels (versão mobile) */
+  .popup-content {
+    margin-top: 4%;
+    width: 100%;
+    padding: 10px; /* Ajuste conforme necessário para a versão mobile */
+  }
+  .signuping {
+    margin-left: 110px;
+    width: 50%;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 20px; /* Ajusta a margem superior */
+  }
+  .popup-content .close-button {
+    position: absolute;
+    top: -2%;
+    margin-left: 90%;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666; /* Adiciona uma cor ao botão de fechar */
+  }
+}
+
+/* Resolução 480px */
+@media (max-width: 480px) {
+  /* Estilos específicos para telas com largura até 768 pixels (versão mobile) */
+  .popup-content {
+    margin-top: 4%;
+    width: 100%;
+    padding: 10px; /* Ajuste conforme necessário para a versão mobile */
+  }
+  .signuping {
+    margin-left: 110px;
+    width: 50%;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 20px; /* Ajusta a margem superior */
+  }
+  .popup-content .close-button {
+    position: absolute;
+    top: -2%;
+    margin-left: 90%;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666; /* Adiciona uma cor ao botão de fechar */
+  }
+}
+
+/* Resolução 1082px */
+@media (max-width: 1200px) {
+  /* Estilos específicos para telas com largura até 768 pixels (versão mobile) */
+  .popup-content {
+    margin-top: 4%;
+    width: 100%;
+    padding: 10px; /* Ajuste conforme necessário para a versão mobile */
+  }
+  .signuping {
+    margin-left: 110px;
+    width: 50%;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 20px; /* Ajusta a margem superior */
+  }
+  .popup-content .close-button {
+    position: absolute;
+    top: -2%;
+    margin-left: 90%;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666; /* Adiciona uma cor ao botão de fechar */
+  }
+}
+
+/* Resolução 1630px */
+@media (max-width: 1630px) {
+ /* Estilos específicos para telas com largura até 768 pixels (versão mobile) */
+ .popup-content {
+  margin-top: 4%;
+  width: 100%;
+  padding: 10px; /* Ajuste conforme necessário para a versão mobile */
+}
+.signuping {
+  margin-left: 110px;
+  width: 50%;
+  height: 40px;
+  border-radius: 8px;
+  margin-top: 20px; /* Ajusta a margem superior */
+}
+.popup-content .close-button {
+  position: absolute;
+  top: -2%;
+  margin-left: 90%;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666; /* Adiciona uma cor ao botão de fechar */
+}
+}
+
+
+@media (max-width: 768px) {
+  
+  /* Estilos específicos para telas com largura até 768 pixels (versão mobile) */
+  .popup-content {
+    margin-top: 4%;
+    width: 100%;
+    padding: 10px; /* Ajuste conforme necessário para a versão mobile */
+  }
+  .signuping {
+    margin-left: 110px;
+    width: 50%;
+    height: 40px;
+    border-radius: 8px;
+    margin-top: 20px; /* Ajusta a margem superior */
+  }
+  .popup-content .close-button {
+    position: absolute;
+    top: -2%;
+    margin-left: 90%;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666; /* Adiciona uma cor ao botão de fechar */
+  }
+}
+
+

@@ -1,4 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,500;0,600;0,700;1,500;1,600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Raleway', sans-serif;
+}
+
 .face-infos {
   width: 50%;
 }
@@ -27,48 +40,85 @@
   color: #07c449;
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1330px) {
   .face-infos h1 {
-      margin-left: 10%;
-      width: 100%;
-      margin-bottom: 5%;
+    margin-left: 30%;
   }
   .face-infos p {
-      margin-right: 70%;
-      width: 100%;
-      margin-bottom: auto;
+    margin-left: 30%;
   }
 }
 
-@media (max-width: 992px) {
-  .face-infos h1 {
-      margin-left: 10%;
-      width: 100%;
-      margin-bottom: auto;
+@media (max-width: 1082px) {
+
+  .face-infos{
+    width: 50%;
   }
   .face-infos p {
-      margin-left: 10%;
-      width: 100%;
-      margin-bottom: auto;
+    width: 100%;
+    margin-left: 61%;
+  }
+  .face-infos h1{
+    margin-top: 12%;
+    margin-left: 57%;
+    width: 50%;
   }
 }
 
 @media (max-width: 768px) {
-  .face-infos {
+
+  .face-infos{
     width: 100%;
   }
-
   .face-infos h1 {
-
-      font-size: 3.0em;
-      margin-left: 10%;
-      width: 100%;
-      margin-bottom: auto;
-    }
+    font-size: 2.5em;
+    margin-top: 12%;
+    width: 40%;
+    margin-left: 32%;
   }
+
   .face-infos p {
-    font-size: 1.2em;
-    margin-left: 10%;
+    font-size: 15px;
+    width: 50%;
+    margin-left: 32%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .face-infos{
+    width: 50%;
+  
+  }
+  .face-infos h1 {
+    font-size: 2.2em;
+    margin-top: 30%;
+    width: 40%;
+    margin-left: 50%;
+  }
+
+  .face-infos p {
+    font-size: 15px;
+    width: 100%;
+    margin-left: 50%;
+  }
+}
+
+@media (max-width: 280px) {
+  .face-infos{
     width: 100%;
   }
+  .face-infos h1 {
+    font-size: 2.0em;
+    margin-top: 12%;
+    width: 40%;
+    margin-left: 9%;
+  }
+
+  .face-infos p {
+    font-size: 1px;
+    width: 120%;
+    margin-left: 9%;
+  }
+}
   
