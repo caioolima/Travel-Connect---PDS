@@ -30,14 +30,14 @@ function LoginForm() {
 
   const customStyles = {
     content: {
-      top: "50%",
+      top: "35%",
       left: "50%",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      width: "28%", // Ajuste a largura do modal conforme necessário
-      height: "90%", // Ajuste a altura do modal conforme necessário
+      transform: "translate(-50%, -30%)",
+      width: "500px", // Ajuste a largura do modal conforme necessário
+      height: "600px", // Ajuste a altura do modal conforme necessário
       borderRadius: "10px",
       padding: "20px",
       overflow: "auto", // Adicione overflow para lidar com conteúdos mais longos
