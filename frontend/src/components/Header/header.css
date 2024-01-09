@@ -55,10 +55,10 @@
   .face-infos h1 {
     font-size: 60px;
     margin-top: 20%;
-    margin-left: auto;
-    margin-right: 10%;
+    margin-left: 30%;
+    margin-right: auto;
     margin-bottom: 15px;
-    padding-left: 5%;
+    
     color: #000000;
   }
   
@@ -70,11 +70,14 @@
   }
   
   .face-infos p {
-    width: 130%;
+    width: 100%;
     text-align: left;
-    margin-left: auto;
-    padding-left: 5%;
+    margin: auto;
+    margin-left: 30%;
+
     margin-right: auto;
     font-weight: 500;
   }
+ 
 }
+

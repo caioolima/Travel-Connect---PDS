@@ -111,9 +111,10 @@
 
 @media (max-width: 1450px) {
   .form {
-    width: 38%;
+    width: 25%;
     max-width: 400px;
-    margin-left: 55%;
+    margin-left: 53%;
+    margin-right: 10px;
   }
 
 }
@@ -122,9 +123,9 @@
 @media (max-width: 950px) {
   .form {
     width: 100%;
-    max-width: 400px;
     padding-top: 10px;
-    margin: auto;
+    margin-left: 30%;
+    margin-right: auto;
     margin-top: 5%; 
   }
 

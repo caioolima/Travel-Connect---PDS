@@ -47,7 +47,7 @@
   }
 
   
-  @media screen and (max-width: 768px) {
+  /* @media screen and (max-width: 950px) {
     .footer {
       display: flex;
       flex-direction: column;
@@ -62,7 +62,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 10px 0;
+      margin: 8px;
     }
   
     .footer .footer-info a {
@@ -70,4 +70,4 @@
       padding: 0 10px;
       
     }
-  }
+  } */
