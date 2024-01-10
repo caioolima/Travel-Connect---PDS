@@ -1,25 +1,22 @@
 {
-  "name": "backend",
+  "name": "connectrips",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node app.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parse": "^0.1.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "mongo": "^0.1.0",
-    "mongodb": "^6.3.0"
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.1.2"
   },
-  "description": "",
   "devDependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^8.0.3",
     "nodemon": "^3.0.2"
   }
 }
