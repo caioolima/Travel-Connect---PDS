@@ -125,7 +125,7 @@ function LoginForm() {
         >
           {t("create_account")}
         </button>
-        <div className="h elp">
+        <div className="help">
           <p>
             {t("need_help")}
             <a href="#"> {t("click_here")}.</a>
