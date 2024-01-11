@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "react-modal";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom"; // Adicione useNavigate aqui
 import "../Form/form.css";
-import axios from 'axios';
 
 Modal.setAppElement("#root");
 
@@ -17,7 +16,7 @@ const initialState = {
   password: "",
   confirmPassword: "",
   dob: "",
-  gender: "masculino",
+  gender: "male",
 };
 
 function LoginForm() {
@@ -29,19 +28,10 @@ function LoginForm() {
   const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
 
+  
   const handleOpenModal = () => {
     setIsOpen(true);
     document.body.style.overflow = 'hidden';
-  };
-
-  const handleInputChange = (field, value) => {
-    console.log(`Updating ${field} with value: ${value}`);
-    setFormFields({ ...formFields, [field]: value });
-
-     // Limpar a mensagem de erro quando o usuário começar a digitar novamente
-  if (formErrors[field]) {
-    setFormErrors({ ...formErrors, [field]: '' });
-  }
   };
 
   const handleCloseModal = () => {
@@ -92,118 +82,10 @@ function LoginForm() {
     padding: "20px",
     overflow: "auto",
   });
-
   const handleForgotPasswordClick = () => {
+    // Redireciona para a página de redefinição de senha
     navigate("/reset");
   };
- 
-  const handleRegisterButtonClick = async () => {
-    setRegistrationMessage("");
-    setLoginMessage("");
-    setFormErrors({});
-    const errors = {};
-
-    const validateEmail = () => {
-      const validEmailDomains = ['outlook.com', 'gmail.com', 'hotmail.com'];
-      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-
-      if (!emailRegex.test(formFields.email)) {
-        return t('invalid_email_error');
-      }
-
-      const [, emailDomain] = formFields.email.split('@');
-
-      if (!validEmailDomains.includes(emailDomain.toLowerCase())) {
-        return t('valid_email_domains_error');
-      }
-
-      return null;
-    };
-
-    errors.username = formFields.username.length < 3 ? t('username_length_error') : null;
-    errors.firstName = formFields.firstName.length < 3 ? t('first_name_length_error') : null;
-    errors.lastName = formFields.lastName.length < 3 ? t('last_name_length_error') : null;
-
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    errors.password = !passwordRegex.test(formFields.password)
-      ? t('password_complexity_error')
-      : null;
-
-    errors.confirmPassword = formFields.password !== formFields.confirmPassword ? t('password_mismatch_error') : null;
-    errors.phone = formFields.phone.length < 3 ? t('phone_length_error') : null;
-
-    const emailError = validateEmail();
-    if (emailError) {
-      errors.email = emailError;
-    }
-
-    if (Object.values(errors).every(error => !error)) {
-      try {
-        if (formFields.username !== initialState.username) {
-          const userAvailability = await checkFieldAvailability('username', formFields.username);
-          if (!userAvailability.available) {
-            setRegistrationMessage(t('username_not_available_error'));
-            return;
-          }
-        }
-
-        if (formFields.phone !== initialState.phone) {
-          const phoneAvailability = await checkFieldAvailability('phone', formFields.phone);
-          if (!phoneAvailability.available) {
-            setRegistrationMessage(t('phone_not_available_error'));
-            return;
-          }
-        }
-
-        if (formFields.email !== initialState.email) {
-          const emailAvailability = await checkFieldAvailability('email', formFields.email);
-          if (!emailAvailability.available) {
-            setRegistrationMessage(t('email_not_available_error'));
-            return;
-          }
-        }
-
-        const response = await axios.post('http://localhost:3000/auth/register', {
-          username: formFields.username,
-          firstName: formFields.firstName,
-          lastName: formFields.lastName,
-          phone: formFields.phone,
-          email: formFields.email,
-          password: formFields.password,
-          confirmPassword: formFields.confirmPassword,
-          dob: formFields.dob,
-          gender: formFields.gender,
-        });
-
-        if (response.data.success) {
-          setRegistrationMessage(t('registration_success_message'));
-        } else {
-          setRegistrationMessage(response.data.message || t('registration_error_message'));
-        }
-      } catch (error) {
-        console.error('Erro durante o registro:', error);
-        setRegistrationMessage(t('registration_error_message'));
-      }
-    } else {
-      setFormErrors(errors);
-    }
-  };
-  
-// Função para verificar a disponibilidade de um campo específico
-const checkFieldAvailability = async (fieldName, value, t) => {
-  try {
-    const response = await axios.post(`http://localhost:3000/auth/checkAvailability`, {
-      fieldName,
-      value,
-    });
-
-    return response.data; // Deve conter uma propriedade "available" indicando se está disponível ou não
-  } catch (error) {
-    console.error(t(`Error checking availability of ${fieldName}:`), error);
-    return { available: false }; // Em caso de erro, considerar como não disponível
-  }
-};
-
 
   return (
     <section className="form-side">
@@ -211,23 +93,19 @@ const checkFieldAvailability = async (fieldName, value, t) => {
         <input
           id="email-login"
           type="text"
-          className={`entrada ${formErrors.email && "input-error"}`}
+          className="entrada"
           placeholder={t("enter_email")}
           value={formFields.email}
-          onChange={(e) => handleInputChange('email', e.target.value)}
           required
         />
-
         <input
           id="password-login"
           type="password"
-          className={`entrada ${formErrors.password && "input-error"}`}
+          className="entrada"
           placeholder={t("enter_password")}
           value={formFields.password}
-          onChange={(e) => handleInputChange('password', e.target.value)}
           required
         />
-
         <button id="loginButton" value="Sign In" className="entrada pink">
           {t("login")}
         </button>
@@ -254,10 +132,11 @@ const checkFieldAvailability = async (fieldName, value, t) => {
           </p>
         </div>
       </div>
+      
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleCloseModal}
-        style={{ content: modalStyle }}
+      style={{ content: modalStyle }}
       >
         <div className="popup">
           <div className="popup-content">
@@ -273,7 +152,6 @@ const checkFieldAvailability = async (fieldName, value, t) => {
                 id="username"
                 placeholder={t("username")}
                 value={formFields.username}
-                onChange={(e) => handleInputChange('username', e.target.value)}
                 required
               />
               {formErrors.username && (
@@ -284,11 +162,10 @@ const checkFieldAvailability = async (fieldName, value, t) => {
                 <div className="flex-item">
                   <input
                     type="text"
-                    className={`entrada ${formErrors.firstName && "input-error"}`}
+                    className={"entrada"}
                     id="firstName"
                     placeholder={t("first_name")}
                     value={formFields.firstName}
-                    onChange={(e) => handleInputChange('firstName', e.target.value)}
                     required
                   />
                   {formErrors.firstName && (
@@ -298,11 +175,10 @@ const checkFieldAvailability = async (fieldName, value, t) => {
                 <div className="flex-item">
                   <input
                     type="text"
-                    className={`entrada ${formErrors.lastName && "input-error"}`}
+                    className={"entrada"}
                     id="lastName"
                     placeholder={t("last_name")}
                     value={formFields.lastName}
-                    onChange={(e) => handleInputChange('lastName', e.target.value)}
                     required
                   />
                   {formErrors.lastName && (
@@ -314,15 +190,10 @@ const checkFieldAvailability = async (fieldName, value, t) => {
               <input
                 type="tel"
                 id="phone"
-                className={`entrada ${formErrors.phone && "input-error"}`}
+                className="entrada"
                 placeholder={t("phone")}
                 value={formFields.phone}
-                onChange={(e) => handleInputChange('phone', e.target.value)}
-                required
               />
-              {formErrors.phone && (
-                <p className="error-message">{formErrors.phone}</p>
-              )}
 
               <input
                 type="email"
@@ -330,13 +201,10 @@ const checkFieldAvailability = async (fieldName, value, t) => {
                 id="email"
                 placeholder={t("email")}
                 value={formFields.email}
-                onChange={(e) => handleInputChange('email', e.target.value)}
                 required
               />
               {formErrors.email && (
-               <p className={`error-message ${formErrors.email && "input-error"}`}>
-               {formErrors.email}
-             </p>
+                <p className="error-message">{formErrors.email}</p>
               )}
 
               <input
@@ -345,20 +213,17 @@ const checkFieldAvailability = async (fieldName, value, t) => {
                 id="password"
                 placeholder={t("password")}
                 value={formFields.password}
-                onChange={(e) => handleInputChange('password', e.target.value)}
                 required
               />
-              {formErrors.password && (
-                <p className="error-message">{formErrors.password}</p>
-              )}
 
               <input
                 type="password"
-                className={`entrada ${formErrors.confirmPassword && "input-error"}`}
+                className={`entrada ${
+                  formErrors.confirmPassword && "input-error"
+                }`}
                 id="confirmPassword"
                 placeholder={t("confirm_password")}
                 value={formFields.confirmPassword}
-                onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
                 required
               />
               {formErrors.confirmPassword && (
@@ -373,7 +238,6 @@ const checkFieldAvailability = async (fieldName, value, t) => {
                 id="dob"
                 max="2005-01-01"
                 required
-                onChange={(e) => handleInputChange('dob', e.target.value)}
               />
 
               <label htmlFor="gender" className="with-placeholder">
@@ -384,27 +248,25 @@ const checkFieldAvailability = async (fieldName, value, t) => {
                 name="gender"
                 value={formFields.gender}
                 required
-                onChange={(e) => handleInputChange('gender', e.target.value)}
-                >
-                  <option value="masculino">{t("male")}</option>
-                  <option value="feminino">{t("female")}</option>
-                  <option value="outro">{t("other")}</option>
-                </select>
-  
-                <button className="signuping" type="button" onClick={handleRegisterButtonClick}>
-                  {t("register_button")}
-                </button>
-                {registrationMessage && (
-                  <p className="registration-message">{registrationMessage}</p>
-                )}
-                {loginMessage && <p className="login-message">{loginMessage}</p>}
-              </form>
-            </div>
+              >
+                <option value="male">{t("male")}</option>
+                <option value="female">{t("female")}</option>
+                <option value="other">{t("other")}</option>
+              </select>
+
+              <button className="signuping" type="button">
+                {t("register_button")}
+              </button>
+              {registrationMessage && (
+                <p className="registration-message">{registrationMessage}</p>
+              )}
+              {loginMessage && <p className="login-message">{loginMessage}</p>}
+            </form>
           </div>
-        </Modal>
-      </section>
-    );
-  }
-  
-  export default LoginForm;
-  
+        </div>
+      </Modal>
+    </section>
+  );
+}
+
+export default LoginForm;
