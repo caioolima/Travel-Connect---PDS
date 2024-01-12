@@ -5,20 +5,6 @@ import Modal from "react-modal";
 import { useNavigate } from "react-router-dom"; // Adicione useNavigate aqui
 import "../Form/form.css";
 
-const checkFieldAvailability = async (fieldName, value, t) => {
-  try {
-    const response = await axios.post(`http://localhost:3000/auth/checkAvailability`, {
-      fieldName,
-      value,
-    });
-
-    return response.data; // Deve conter uma propriedade "available" indicando se está disponível ou não
-  } catch (error) {
-    console.error(t(`Error checking availability of ${fieldName}:`), error);
-    return { available: false }; // Em caso de erro, considerar como não disponível
-  }
-};
-
 Modal.setAppElement("#root");
 
 const initialState = {
@@ -48,27 +34,9 @@ function LoginForm() {
     document.body.style.overflow = 'hidden';
   };
 
-<<<<<<< Updated upstream
-=======
-  const handleInputChange = (field, value) => {
-    console.log(`Updating ${field} with value: ${value}`);
-    setFormFields({ ...formFields, [field]: value });
-
-     // Limpar a mensagem de erro quando o usuário começar a digitar novamente
-  if (formErrors[field]) {
-    setFormErrors({ ...formErrors, [field]: '' });
-  }
-  };
-
-  const clearErrors = () => {
-    setFormErrors({});
-  };
-
->>>>>>> Stashed changes
   const handleCloseModal = () => {
     setIsOpen(false);
     document.body.style.overflow = 'auto';
-    clearErrors(); // Limpa os erros ao fechar o modal
   };
 
   useEffect(() => {
@@ -118,122 +86,6 @@ function LoginForm() {
     // Redireciona para a página de redefinição de senha
     navigate("/reset");
   };
-<<<<<<< Updated upstream
-=======
-  const handleLoginButtonClick = async () => {
-    setRegistrationMessage("");
-    setFormErrors({}); // Limpar os erros ao tentar fazer login
-    try {
-      const response = await axios.post('http://localhost:3000/auth/login', {
-      username: formFields.username, // Adicione esta linha
-      password: formFields.password,
-    });
-  
-      if (response.data.success) {
-        setLoginMessage(t('login_success_message'));
-        // Lógica adicional após o login bem-sucedido, se necessário
-      } else {
-        setLoginMessage(response.data.message || t('login_error_message'));
-      }
-    } catch (error) {
-      console.error('Erro durante o login:', error);
-      setLoginMessage(t('login_error_message'));
-    }
-  };
-
-  const handleRegisterButtonClick = async () => {
-    setRegistrationMessage("");
-    setLoginMessage("");
-    setFormErrors({});
-    const errors = {};
-
-    const validateEmail = () => {
-      const validEmailDomains = ['outlook.com', 'gmail.com', 'hotmail.com'];
-      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-
-      if (!emailRegex.test(formFields.email)) {
-        return t('invalid_email_error');
-      }
-
-      const [, emailDomain] = formFields.email.split('@');
-
-      if (!validEmailDomains.includes(emailDomain.toLowerCase())) {
-        return t('valid_email_domains_error');
-      }
-
-      return null;
-    };
-
-    errors.username = formFields.username.length < 3 ? t('username_length_error') : null;
-    errors.firstName = formFields.firstName.length < 3 ? t('first_name_length_error') : null;
-    errors.lastName = formFields.lastName.length < 3 ? t('last_name_length_error') : null;
-
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    errors.password = !passwordRegex.test(formFields.password)
-      ? t('password_complexity_error')
-      : null;
-
-    errors.confirmPassword = formFields.password !== formFields.confirmPassword ? t('password_mismatch_error') : null;
-    errors.phone = formFields.phone.length < 3 ? t('phone_length_error') : null;
-
-    const emailError = validateEmail();
-    if (emailError) {
-      errors.email = emailError;
-    }
-
-    if (Object.values(errors).every(error => !error)) {
-      try {
-        if (formFields.username !== initialState.username) {
-          const userAvailability = await checkFieldAvailability('username', formFields.username);
-          if (!userAvailability.available) {
-            setRegistrationMessage(t('username_not_available_error'));
-            return;
-          }
-        }
-
-        if (formFields.phone !== initialState.phone) {
-          const phoneAvailability = await checkFieldAvailability('phone', formFields.phone);
-          if (!phoneAvailability.available) {
-            setRegistrationMessage(t('phone_not_available_error'));
-            return;
-          }
-        }
-
-        if (formFields.email !== initialState.email) {
-          const emailAvailability = await checkFieldAvailability('email', formFields.email);
-          if (!emailAvailability.available) {
-            setRegistrationMessage(t('email_not_available_error'));
-            return;
-          }
-        }
-
-        const response = await axios.post('http://localhost:3000/auth/register', {
-          username: formFields.username,
-          firstName: formFields.firstName,
-          lastName: formFields.lastName,
-          phone: formFields.phone,
-          email: formFields.email,
-          password: formFields.password,
-          confirmPassword: formFields.confirmPassword,
-          dob: formFields.dob,
-          gender: formFields.gender,
-        });
-
-        if (response.data.success) {
-          setRegistrationMessage(t('registration_success_message'));
-        } else {
-          setRegistrationMessage(response.data.message || t('registration_error_message'));
-        }
-      } catch (error) {
-        console.error('Erro durante o registro:', error);
-        setRegistrationMessage(t('registration_error_message'));
-      }
-    } else {
-      setFormErrors(errors);
-    }
-  };
-  
->>>>>>> Stashed changes
 
   return (
     <section className="form-side">
@@ -254,14 +106,8 @@ function LoginForm() {
           value={formFields.password}
           required
         />
-<<<<<<< Updated upstream
         <button id="loginButton" value="Sign In" className="entrada pink">
           {t("login")}
-=======
-
-        <button id="loginButton" value="Sign In" className="entrada pink" onClick={handleLoginButtonClick}>
-            {t("login")}
->>>>>>> Stashed changes
         </button>
 
         <span
